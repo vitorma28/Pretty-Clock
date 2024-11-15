@@ -6,7 +6,7 @@
     <title>Pretty Clock</title>
     <style>
         :root {
-            --size: 125px;
+            --size: 175px;
         }
 
         html {
@@ -45,7 +45,7 @@
         }
 
         #digital-clock {
-            box-shadow: 2px 2px 2px 2px #676767;
+            box-shadow: 2px 2px 2px 2px black;
             border: 2px solid black;
             border-radius: 50%;
             padding: 10px;
@@ -55,7 +55,6 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background-color: #fff;
             background: radial-gradient(#fff 10%, #ddd 70%, #000 20%);
             text-align: center;
         }
@@ -73,7 +72,7 @@
         }
 
         #analogic-tbody {
-            box-shadow: 2px 2px 2px 2px #676767;
+            box-shadow: 2px 2px 2px 2px black;
             border: 2px solid black;
             border-radius: 50%;
             width: var(--size);
@@ -82,7 +81,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background-color: #fff; 
+            background: radial-gradient(#fff 10%, #ddd 70%, #000 20%);
         }
 
         #analogic-clock tr {
@@ -118,68 +117,94 @@
         <br>
         <button onclick="toggleClocks()" id="toggler-button">Para analógico</button>
     </div>
-    <div id="digital-clock">
+    <div id="digital-clock" class="hidden">
         <div id="day"></div>
         <b id="hours"></b>
         <div id="mins"></div>
         <div id="month"></div>
     </div>
-    <table id="analogic-clock" class="hidden">
+    <table id="analogic-clock">
         <tbody id="analogic-tbody">
             <tr>
-                <td id="pointed-up-left">|</td>
-                <td id="pointed-up">|</td>
-                <td id="pointed-up-right">|</td>
+                <td></td>
+                <td id="pointed-up-left" class="pointed">11</td>
+                <td id="pointed-up" class="pointed">12</td>
+                <td id="pointed-up-right" class="pointed">1</td>
+                <td></td>
             </tr>
             <tr>
-                <td id="pointed-left">|</td>
+                <td id="pointed-left-up" class="pointed">10</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td id="pointed-right-up" class="pointed">2</td>
+            </tr>
+            <tr>
+                <td id="pointed-left" class="pointed">9</td>
+                <td></td>
                 <td>
-                    <del id="analogic-minutes" class="pointer" style="transform: rotate(-90deg);">------</del>
-                    <del id="analogic-hours" class="pointer" style="transform: rotate(0deg);">----</del>
+                    <div id="analogic-minutes" class="pointer" style="transform: rotate(-90deg);">------</div>
+                    <div id="analogic-hours" class="pointer" style="transform: rotate(0deg);">----</div>
                 </td>
-                <td id="pointed-right">|</td>
+                <td></td>
+                <td id="pointed-right" class="pointed">3</td>
             </tr>
             <tr>
-                <td id="pointed-down-left">|</td>
-                <td id="pointed-down">|</td>
-                <td id="pointed-down-right">|</td>
+                <td id="pointed-left-down" class="pointed">8</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td id="pointed-right-down" class="pointed">4</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td id="pointed-down-left" class="pointed">7</td>
+                <td id="pointed-down" class="pointed">6</td>
+                <td id="pointed-down-right" class="pointed">5</td>
+                <td></td>
             </tr>
 
             <style>
                 #pointed-up-left {
-                    transform: rotate(-45deg);
-                    padding-top: 15px;
+                    align-items: end;
                 }
+                #pointed-left-up {
+                    justify-content: right;
+                }
+
                 #pointed-up-right {
-                    transform: rotate(45deg);
-                    padding-top: 15px;
+                    align-items: end;
+                }
+                #pointed-right-up {
+                    justify-content: left;
+                }
+
+                #pointed-right-down {
+                    justify-content: left;
+                }
+                #pointed-down-right {
+                    align-items: start;
                 }
 
                 #pointed-down-left {
-                    transform: rotate(45deg);
-                    padding-bottom: 20px;
+                    align-items: start;
                 }
-                #pointed-down-right {
-                    transform: rotate(-45deg);
-                    padding-bottom: 20px;
+                #pointed-left-down {
+                    justify-content: right;
                 }
 
-                #pointed-left {
-                    transform: rotate(90deg);
-                    align-items: end;
+                
+                #pointed-up {
                     padding-bottom: 5px;
                 }
                 #pointed-right {
-                    transform: rotate(90deg);
-                    align-items: start;
-                }
-
-                #pointed-up {
-                    align-items: start;
+                    padding-left: 5px;
                 }
                 #pointed-down {
-                    align-items: end;
-                    padding-bottom: 5px;
+                    padding-top: 5px;
+                }
+                #pointed-left {
+                    padding-right: 5px;
                 }
             </style>
         </tbody>
